@@ -6,6 +6,7 @@ Ridge Regression
 
 import numpy as np
 from costs import *
+from helpers import *
 
 
 
@@ -108,5 +109,11 @@ def compute_stoch_gradient(y, tx, w):
     losses=compute_loss(y, tx, w)
     return losses,gradient
 
-
+def build_poly(x, degree):
+    """polynomial basis functions for input data x, for j=0 up to j=degree."""
+    matrix_poly = np.zeros((x.shape[0], degree+1))
+    for i in range(degree+1):
+        matrix_poly[:,i]=x[:]**i
+            
+    return matrix_poly
 
