@@ -3,12 +3,8 @@
 
 Ridge Regression
 """
-
 import numpy as np
 from costs import *
-
-
-
 
 def least_squares_GD(y, tx, intial_w, max_iters, gamma):
     """Gradient descent algorithm."""
@@ -25,8 +21,6 @@ def least_squares_GD(y, tx, intial_w, max_iters, gamma):
         print("Gradient Descent({bi}/{ti}): loss={l}, w0={w0}, w1={w1}".format(
               bi=n_iter, ti=max_iters - 1, l=loss, w0=w[0], w1=w[1]))
     return w, losses
-
-
 
 
 def least_squares_SGD(y, tx, initial_w, max_iters, gamma):
@@ -48,9 +42,6 @@ def least_squares_SGD(y, tx, initial_w, max_iters, gamma):
         
     return w, losses
 
-
-
-
 def least_squares(y, tx):
     """calculate the least squares solution."""
     a = tx.T.dot(tx)
@@ -62,9 +53,6 @@ def least_squares(y, tx):
     return w, loss
     #return mae,w
     
-    
-    
-
 def ridge_regression(y, tx,lambda_):    
     aI = 2 * tx.shape[0] * lambda_ * np.identity(tx.shape[1])
     a = tx.T.dot(tx) + aI
@@ -75,13 +63,9 @@ def ridge_regression(y, tx,lambda_):
     #mae=compute_mae(y,tx,w)
     return w, loss
     #return mae,w
-
-    
-    
-    
+       
 def logistic_regression(y, tx, initial_w, max_iters, gamma):
     return w, loss
-
 
 
 
