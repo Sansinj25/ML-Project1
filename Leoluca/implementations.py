@@ -57,12 +57,25 @@ def least_squares(y, tx):
     a = tx.T.dot(tx)
     b = tx.T.dot(y)
     w=np.linalg.solve(a, b)
-    error=(y-np.dot(tx,w))
+    #error=(y-np.dot(tx,w))
     loss=compute_mse(y,tx,w)
     #mae=compute_mae(y,tx,w)
     return w, loss
     #return mae,w
     
+def least_squares_3d(y, tx):
+    """calculate the least squares solution."""
+    a=np.zeros((tx.shape[1],tx.shape[2],tx.shape[2]))
+    b=np.zeros((tx.shape[1],tx.shape[2]))
+    for i in range(tx.shape[1]):
+        a[i,:,:] = tx[:,i,:].T.dot(tx[:,i,:])
+        b[i,:] = tx[:,i,:].T.dot(y)
+    w=np.linalg.solve(a, b)
+    #error=(y-np.dot(tx,w))
+    #loss=compute_mse(y,tx,w)
+    #mae=compute_mae(y,tx,w)
+    return w
+    #return mae,w
     
     
 
@@ -114,6 +127,7 @@ def build_poly(x, degree):
     matrix_poly = np.zeros((x.shape[0], degree+1))
     for i in range(degree+1):
         matrix_poly[:,i]=x[:]**i
-            
+    
     return matrix_poly
+
 

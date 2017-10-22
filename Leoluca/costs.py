@@ -8,6 +8,12 @@ def compute_mse(y, tx, w):
     mse = e.dot(e) / (2 * len(e))
     return mse
 
+def compute_mse_3d(y, y_pred):
+    #compute the loss by mse.
+    e=np.zeros((y.shape[0]))
+    e=y-y_pred
+    mse = e.dot(e) / (2 * len(e))
+    return mse
 """def compute_mse(y, tx, w):
     #Calculate the loss using mse 
     
